@@ -44,13 +44,15 @@ deck.shuffle()
 // class Board {
 	deck.cards.forEach(card => {
 		let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"></div></div></div>`
-	    $("#gameboard").append(cardhtml)
+		$("#gameboard").append(cardhtml)
 	})
 //}
 
 var choices = []
 
-$(".front").on("click", function(){
+$(".flipper").on("click", function(){
+	$($(this)).toggleClass("flipped")
+	
 	if(choices.length < 2) {
 		choices.push($(this).text())
 	}
