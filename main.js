@@ -19,8 +19,29 @@ class Deck {
 			}
 		}
 	}
+
+	shuffle() {
+    for (let i = this.cards.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        let x = this.cards[i]
+        this.cards[i] = this.cards[j]
+        this.cards[j] = x
+    }
+  }
 }
 
 var deck = new Deck
 
 console.log(deck)
+deck.shuffle()
+
+
+
+// class Board {
+	deck.cards.forEach(card => {
+		let cardhtml = `<div class="card">
+		<img src="./resources/images/${card.display}">
+	</div>`
+	$("#gameboard").append(cardhtml)
+	})
+//}

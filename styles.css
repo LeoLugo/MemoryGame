@@ -1,0 +1,11 @@
+.card {
+	height: 200px;
+	width: 300px;
+}
+#gameboard {
+	display: flex;
+}
+.card img {
+	width: 150px;
+	height: 200px;
+}
