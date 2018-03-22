@@ -28,6 +28,10 @@ class Deck {
         this.cards[j] = x
     }
   }
+
+  get getCards() {
+	return this.cards
+  }
 }
 
 var deck = new Deck
@@ -39,11 +43,8 @@ deck.shuffle()
 
 // class Board {
 	deck.cards.forEach(card => {
-		let cardhtml = `<div class="card">
-		<span class="cardvalue">${card.value}</span>
-		<img src="./resources/images/${card.display}">
-	</div>`
-	$("#gameboard").append(cardhtml)
+		let cardhtml = `<div class="card"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div>`
+	    $("#gameboard").append(cardhtml)
 	})
 //}
 
@@ -51,7 +52,8 @@ var choices = []
 
 $(".card").on("click", function(){
 	choices.push($(this).text())
-	console.log($(this).card)
+	// console.log(typeof $(this).text())
+	console.log(choices)
 })
 
 

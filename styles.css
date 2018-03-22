@@ -9,3 +9,7 @@
 	width: 150px;
 	height: 200px;
 }
+
+.cardvalue {
+	display: none;
+}
