@@ -1,0 +1,79 @@
+body {
+	box-sizing: border-box;
+	font-family: 'Star', sans-serif;
+	background-image: url("resources/images/starback.jpg");
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+@font-face {
+	font-family: 'Star';
+	src: url('./resources/fonts/Starjedi.ttf') format("truetype");
+}
+
+#winpic {
+	height: 300px;
+	width: 400px; 
+	background-image: url("resources/images/starwarswin.gif");
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin: auto;
+	margin-top: 100px;
+}
+
+
+p {
+  color: #FFFF82;
+  text-align: center;
+}
+
+#board {
+  transform: perspective(300px) rotateX(25deg);
+  transform-origin: 50% 100%;
+  text-align: justify;
+  position: absolute;
+  margin-left: -9em;
+  font-weight: bold;
+  overflow: hidden;
+  font-size: 350%;
+  height: 50em;
+  width: 18em;
+  bottom: 0;
+  left: 50%;
+  letter-spacing: 20px;
+}
+
+#board:after {
+  position: absolute;
+  content: ' ';
+  bottom: 60%;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+#content {
+  animation: scroll 100s linear 1s;
+  position: absolute;
+  top: 100%;
+}
+
+#title, #subtitle {
+  text-align: center;
+}
+
+@keyframes scroll {
+    0% {
+        top: 100%;
+    }
+    100% {
+        top: -170%;
+    }
+}
+
+
+
+
+
+
+
