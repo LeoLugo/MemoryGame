@@ -42,13 +42,9 @@ class Deck {
   }
 }
 
-// var deck 
-// deck.setNumOfCards()
-// deck.shuffle()
-
 $(document).ready(function() {
 	$('#start-easy').on("mouseup", function(e) {
-		$('.container-start').animate({right: '50%'}, function(){ $('.container-start').remove(); }).delay(1000)
+		$('.container-start').animate({right: '50%'}, function(){ $('.container-start').remove(); })
 		var deck = new Deck(Number($(this)[0].attributes[5].nodeValue))
 		deck.shuffle()
 		cantina.pause()
@@ -58,6 +54,12 @@ $(document).ready(function() {
 		$('#points').removeClass('hide')
 		// $('.container-start').addClass('hide')
 		makeBoard(deck.cards)
+		setTimeout(function() {
+			$('#points').removeClass('hide')
+			$('#health').removeClass('hide')
+			makeBoard(deck.cards)
+		},1000)
+
 	})
 
 	function makeBoard(cards) {
@@ -67,13 +69,13 @@ $(document).ready(function() {
 			$("#gameboard").append(cardhtml)
 			console.log(card)
 		})
-		// window.location.href = 'file:///Users/punchcode/PC/MemoryGame/index.html';
-		
-	// }	
+
 		var choices = [];
 		let points = 0;
+		let health = 100;
 		$('.points-total').text(points)
-		
+		$('.health-total').text(points)
+
 		$(".flipper").on("click", function(){
 			flipcard.play()
 
