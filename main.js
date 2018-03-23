@@ -47,24 +47,37 @@ var choices = []
 
 $(".flipper").on("click", function(){
 	$($(this)).toggleClass("flipped")
-	
+	let choice = {}
+	choice.elem=$(this)
+	choice.value=Number($(this).text())
 	if(choices.length < 2) {
-		choices.push($(this).text())
+		choices.push(choice)
 	}
 	if(choices.length === 2) {
 		// $(".flipper").off("click" , "$(this)");
 		// $(".flipper").prop("disabled", true);
-		$(".flipper").unbind("click");
+		// $(".flipper").unbind("click");
+		$(".flipper").css("pointer-events", "none");
 		if(choices[0] === choices[1]) {
-
+			console.log('equal')
+			
 		} else if (choices[0] !== choices[1]) {
-			if ($(".flipper").hasClass(".flipped")) {
-				$(".flipper").removeClass(".flipped");
-			}
+			console.log('unequal')
+			console.log(choices[0].elem[0])
+			setInterval(()=> {
+				$(".flipper").removeClass("flipped");
+	
+			}, 2000)
+			$(".flipper").css("pointer-events", "auto");
+			
+			// if ($(".flipper").hasClass(".flipped")) {
+			// 	$(".flipper").bind("click")
+			// 	console.log('yes')
+			// }	
 		}
-		
+		choices = [];
 	}
-	console.log(choices)
+	// console.log(choices)
 })
 
 
