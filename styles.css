@@ -2,7 +2,15 @@ body {
 	display: flex;
 	justify-content: center;
 	background-color: rgb(211,190,130);
+	font-family: 'Star', sans-serif;
 }
+
+@font-face {
+	font-family: 'Star';
+	src: url('./resources/fonts/Starjedi.ttf') format("truetype");
+}
+
+/* game page */
 #gameboard {
 	display: flex;
 	flex-wrap: wrap;
@@ -43,6 +51,7 @@ body {
 	height: 200px;
 }
 
+
 /* flip speed goes here */
 .flipper {
 	transition: 0.6s;
@@ -75,4 +84,29 @@ body {
 	transform: rotateY(0deg);
 	background-color: rgb(227, 230, 206);
 	border-radius: 8px;
+}
+
+
+/* start page */
+
+.container-start {
+	display: flex;
+	flex-direction: column;
+	height: 800px;
+	/* align-items: center; */
+	justify-content: center;
+}
+
+h1 {
+	font-size: 60px;
+}
+
+h3 {
+	font-size: 40px;
+}
+
+button {
+	padding: 20px;
+	font-family: 'Star';
+	margin: 20px;
 }
