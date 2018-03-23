@@ -34,6 +34,7 @@ body {
 	display: none;
 }
 
+/* flip animation */
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000px;
@@ -107,7 +108,7 @@ h3 {
 	font-size: 40px;
 }
 
-button {
+button, input {
 	padding: 20px;
 	font-family: 'Star';
 	margin: 20px;
@@ -130,7 +131,7 @@ button {
 	z-index: 100;
 }
 
-button:active {
+input:active {
 	box-shadow: inset 2px 2px 2px rgb(136, 136, 126);
 }
 
