@@ -83,6 +83,15 @@ $(document).ready(function() {
 			choices = [];
 		}
 	})
+
+	$('#start-game').on("mouseup", function(e) {
+		$('#start-game, #start-easy, #start-hard').fadeToggle();
+		// $('#start-easy, #start-hard').fadeIn(500);
+	})
+	$('#start-easy').on("mouseup", function(e) {
+		window.location.href = 'file:///Users/punchcode/PC/MemoryGame/index.html';
+		// location.reload();
+	})
 })
 			
 			
