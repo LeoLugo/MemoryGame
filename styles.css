@@ -34,6 +34,7 @@ body {
 	display: none;
 }
 
+/* flip animation */
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000px;
@@ -92,9 +93,11 @@ body {
 .container-start {
 	display: flex;
 	flex-direction: column;
-	height: 800px;
-	/* align-items: center; */
-	justify-content: center;
+	position: relative;
+	height: 500px;
+	align-items: center;
+	/* justify-content: center; */
+	margin-top: 10%;
 }
 
 h1 {
@@ -105,8 +108,34 @@ h3 {
 	font-size: 40px;
 }
 
-button {
+button, input {
 	padding: 20px;
 	font-family: 'Star';
 	margin: 20px;
+	width: 350px;
+	border: 1px solid rgb(239, 147, 72);
+	background-color: rgb(120, 167, 104);
+	box-shadow: 2px 2px 2px rgb(136, 136, 136);
+	font-size: 25px;
+	outline: none;
 }
+
+.mode-buttons {
+	/* content: ''; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 100px;
+	left: 19px;
+	z-index: 100;
+}
+
+input:active {
+	box-shadow: inset 2px 2px 2px rgb(136, 136, 126);
+}
+
+.hide {
+	display: none;
+}
+

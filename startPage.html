@@ -8,12 +8,16 @@
 </head>
 <body>
     <div class="container-start">
-        <h1>Memory</h1>
+        <h1>Memory//////</h1>
         <h3>Star Wars Edition</h3>
         <button id="start-game">New Game</button>
-        <button id="start-easy">Easy mode</button>
-        <button id="start-hard">hard mode</button>
+        <div class="mode-buttons">
+                <input type="button" name="startEasy" value="easy mode" id="start-easy" class="hide" data-cardNum="8" />
+                <input type="button" name="startEasy" value="hard mode" id="start-hard" class="hide" data-cardNum="{{result['12']}}" />
+        </div>
     </div>
+	<div id="gameboard"></div>
+    
 
 
 
