@@ -20,6 +20,13 @@ body {
 	justify-content: space-between;
 	margin-top: 100px;
 }
+
+#points, #health {
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 100px;
+}
+
 .front img {
 	width: 80%;
 }
@@ -98,6 +105,8 @@ body {
 	align-items: center;
 	/* justify-content: center; */
 	margin-top: 10%;
+	margin-left: 5%;
+	width: 580px;
 }
 
 h1 {
@@ -127,7 +136,7 @@ button, input {
 	align-items: center;
 	position: absolute;
 	top: 100px;
-	left: 19px;
+	left: 45px;
 	z-index: 100;
 }
 

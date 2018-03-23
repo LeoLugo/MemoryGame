@@ -8,22 +8,27 @@
 </head>
 <body>
 
-	<div id="points" class="hide">
-		<span class="points-message">Points: </span>
-		<span class="points-total"></span>
-	</div>
-
 	<div class="container-start">
 		<h1>Memory//////</h1>
 		<h3>Star Wars Edition</h3>
 		<button id="start-game">New Game</button>
 		<div class="mode-buttons">
-				<input type="button" name="startEasy" value="easy mode" id="start-easy" class="hide" data-cardNum="8" />
-				<input type="button" name="startEasy" value="hard mode" id="start-hard" class="hide" data-cardNum="{{result['12']}}" />
+			<input type="button" name="startEasy" value="easy mode" id="start-easy" class="hide" data-cardNum="8" />
+			<input type="button" name="startEasy" value="hard mode" id="start-hard" class="hide" data-cardNum="12" />
 		</div>
 	</div>
 
+	<div id="points" class="hide">
+		<span class="points-message">Points: </span>
+		<span class="points-total"></span>
+	</div>
+
 	<div id="gameboard"></div>
+
+	<div id="health" class="hide">
+		<span class="health-message">Health: </span>
+		<span class="health-total"></span>
+	</div>
 
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.min.js"
