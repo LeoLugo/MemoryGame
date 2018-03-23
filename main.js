@@ -36,56 +36,54 @@ class Deck {
 var deck = new Deck
 deck.shuffle()
 
-// class Board {
+$(document).ready(function() {
+
+	// class Board {
 	deck.cards.forEach(card => {
 		let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
 		$("#gameboard").append(cardhtml)
 	})
-//}
-
-var choices = []
-
-$(".flipper").on("click", function(){
-	$($(this)).toggleClass("flipped")
-	let choice = {}
-	choice.elem=$(this)
-	choice.value=Number($(this).text())
-	if(choices.length < 2) {
-		choices.push(choice)
-	}
-	if(choices.length === 2) {
-		// $(".flipper").off("click" , "$(this)");
-		// $(".flipper").prop("disabled", true);
-		// $(".flipper").unbind("click");
-		$(".flipper").css("pointer-events", "none");
-		if(choices[0] === choices[1]) {
-			console.log('equal')
-			
-		} else if (choices[0] !== choices[1]) {
-			console.log('unequal')
-			console.log(choices[0].elem[0])
-			setInterval(()=> {
-				$(".flipper").removeClass("flipped");
+	//}
 	
-			}, 2000)
-			$(".flipper").css("pointer-events", "auto");
-			
-			// if ($(".flipper").hasClass(".flipped")) {
-			// 	$(".flipper").bind("click")
-			// 	console.log('yes')
-			// }	
+	var choices = []
+	
+	$(".flipper").on("click", function(){
+		$($(this)).toggleClass("flipped")
+		let choice = {}
+		choice.elem=$(this)
+		choice.value=Number($(this).text())
+		$($(this)).css("pointer-events", "none");
+		if(choices.length < 2) {
+			choices.push(choice)
 		}
-		choices = [];
-	}
-	// console.log(choices)
+		if(choices.length === 2) {
+			if(choices[0].value === choices[1].value) {
+
+				choices[0].elem[0].classList.add('disabled')
+				choices[1].elem[0].classList.add('disabled')
+
+				$('.disabled').off()
+				$(".flipper").css("pointer-events", "auto");
+			} else if (choices[0].value !== choices[1].value) {
+				choices[0].elem[0].classList.add('unmatched')
+				choices[1].elem[0].classList.add('unmatched')
+				
+				setTimeout(()=> {
+						$(".unmatched").removeClass("flipped");
+						$(".flipper").css("pointer-events", "auto");
+						$(".flipper").removeClass('unmatched')
+				}, 1000)
+			}
+			choices = [];
+		}
+	})
 })
-
-
-
-
-
-
-
+			
+			
+			
+			
+			
+			
 
 
 
