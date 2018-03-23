@@ -37,21 +37,22 @@ var deck = new Deck
 deck.shuffle()
 
 $(document).ready(function() {
-
-	// class Board {
+	
 	deck.cards.forEach(card => {
 		let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
 		$("#gameboard").append(cardhtml)
 	})
-	//}
 	
-	var choices = []
+	var choices = [];
+	let points = 0;
+	$('.points-total').text(points)
 	
 	$(".flipper").on("click", function(){
-		$($(this)).toggleClass("flipped")
+		
 		let choice = {}
 		choice.elem=$(this)
 		choice.value=Number($(this).text())
+		$($(this)).toggleClass("flipped")
 		$($(this)).css("pointer-events", "none");
 		if(choices.length < 2) {
 			choices.push(choice)
@@ -64,6 +65,9 @@ $(document).ready(function() {
 
 				$('.disabled').off()
 				$(".flipper").css("pointer-events", "auto");
+
+				points += 10;
+				$('.points-total').text(points)
 			} else if (choices[0].value !== choices[1].value) {
 				choices[0].elem[0].classList.add('unmatched')
 				choices[1].elem[0].classList.add('unmatched')
@@ -73,6 +77,8 @@ $(document).ready(function() {
 						$(".flipper").css("pointer-events", "auto");
 						$(".flipper").removeClass('unmatched')
 				}, 1000)
+				points -= 2;
+				$('.points-total').text(points)
 			}
 			choices = [];
 		}
