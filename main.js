@@ -1,5 +1,9 @@
 const cardImages = ['at-at.svg','bounty_hunter.svg','c3po.svg','death_star.svg','clone.svg','yoda.svg','light_saber_green.svg','r2d2.svg','tie-fighter.svg','falcon.svg','vader.svg','x-wing.svg']
-
+var chewy = new Audio("resources/audio/chewy.mp3")
+var flipcard = new Audio("resources/audio/flip.mp3")
+var jedi = new Audio("resources/audio/disturbance.mp3")
+var cantina = new Audio("resources/audio/cantina.mp3")
+cantina.play()
 // let numOfCards = 0;
 // console.log(numOfCards)
 class Card {
@@ -47,6 +51,10 @@ $(document).ready(function() {
 		$('.container-start').animate({right: '50%'}, function(){ $('.container-start').remove(); }).delay(1000)
 		var deck = new Deck(Number($(this)[0].attributes[5].nodeValue))
 		deck.shuffle()
+		cantina.pause()
+		chewy.play()
+		// jedi.play()   add this sound effect to hard mode
+
 		$('#points').removeClass('hide')
 		// $('.container-start').addClass('hide')
 		makeBoard(deck.cards)
@@ -67,7 +75,8 @@ $(document).ready(function() {
 		$('.points-total').text(points)
 		
 		$(".flipper").on("click", function(){
-			
+			flipcard.play()
+
 			let choice = {}
 			choice.elem=$(this)
 			choice.value=Number($(this).text())
@@ -78,7 +87,6 @@ $(document).ready(function() {
 			}
 			if(choices.length === 2) {
 				if(choices[0].value === choices[1].value) {
-
 					choices[0].elem[0].classList.add('disabled')
 					choices[1].elem[0].classList.add('disabled')
 
