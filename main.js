@@ -52,9 +52,17 @@ $(".flipper").on("click", function(){
 		choices.push($(this).text())
 	}
 	if(choices.length === 2) {
+		// $(".flipper").off("click" , "$(this)");
+		// $(".flipper").prop("disabled", true);
+		$(".flipper").unbind("click");
 		if(choices[0] === choices[1]) {
 
+		} else if (choices[0] !== choices[1]) {
+			if ($(".flipper").hasClass(".flipped")) {
+				$(".flipper").removeClass(".flipped");
+			}
 		}
+		
 	}
 	console.log(choices)
 })
