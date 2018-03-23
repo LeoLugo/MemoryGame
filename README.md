@@ -1,4 +1,4 @@
 # Stuff to do
-* populate game board from deck object
+* <del>populate game board from deck object</del>
 * create logic to compare cards
-* make basic card styling
+* <del>make basic card styling</del>

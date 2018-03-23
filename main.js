@@ -1,4 +1,4 @@
-const cardImages = ['at-at.svg','bounty_hunter.svg','c3po.svg','death_star.svg','clone.svg','yoda.svg','light_saber_green.svg','r2d2.svg','tie-fighter.svg']
+const cardImages = ['at-at.svg','bounty_hunter.svg','c3po.svg','death_star.svg','clone.svg','yoda.svg','light_saber_green.svg','r2d2.svg','tie-fighter.svg','falcon.svg','vader.svg','x-wing.svg']
 
 class Card {
 	constructor(value, display) {
@@ -10,10 +10,9 @@ class Card {
 class Deck {
 	constructor() {
 		this.cards = []
-		// this.pics = ["one", "two", "three", "four", "five"]
 
 		for(let x = 0; x < 2; x++) {
-			for(let v = 0; v < 5; v++) {
+			for(let v = 0; v < 8; v++) {   //this value changes board size
 				let value = v
 				this.cards.push(new Card(value, cardImages[v]))
 			}
@@ -35,15 +34,11 @@ class Deck {
 }
 
 var deck = new Deck
-
-console.log(deck)
 deck.shuffle()
-
-
 
 // class Board {
 	deck.cards.forEach(card => {
-		let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"></div></div></div>`
+		let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
 		$("#gameboard").append(cardhtml)
 	})
 //}
@@ -61,6 +56,7 @@ $(".flipper").on("click", function(){
 
 		}
 	}
+	console.log(choices)
 })
 
 
