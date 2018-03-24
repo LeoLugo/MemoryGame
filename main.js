@@ -90,9 +90,11 @@ $(document).ready(function() {
 
 	function makeBoard(cards, health = 100) {
 		
-		cards.forEach(card => {
-			let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
-			$("#gameboard").append(cardhtml)
+		$.each(cards, function(i) {
+			setTimeout(function() { 
+				let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${cards[i].value}</span><img src="./resources/images/${cards[i].display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
+				$("#gameboard").append(cardhtml)
+			},100 * i)
 		})
 
 		var choices = [];
