@@ -23,11 +23,12 @@ body {
 #winpic {
 	height: 300px;
 	width: 400px; 
-	background-image: url("resources/images/starlose.jpg");
+	background-image: url("resources/images/vader_gif.gif");
 	background-repeat: no-repeat;
 	background-size: cover;
 	margin: auto;
-	margin-top: 100px;
+  margin-top: 100px;
+  box-shadow: 0px 0px 40px 40px rgb(41, 41, 41);
 }
 
 p {
