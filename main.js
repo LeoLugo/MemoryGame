@@ -53,7 +53,6 @@ $(document).ready(function() {
 
 		$('#points').removeClass('hide')
 		// $('.container-start').addClass('hide')
-		makeBoard(deck.cards)
 		setTimeout(function() {
 			$('#points').removeClass('hide')
 			$('#health').removeClass('hide')
@@ -67,7 +66,6 @@ $(document).ready(function() {
 		cards.forEach(card => {
 			let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
 			$("#gameboard").append(cardhtml)
-			console.log(card)
 		})
 
 		var choices = [];
@@ -117,13 +115,6 @@ $(document).ready(function() {
 	$('#start-game').on("mouseup", function(e) {
 		$('#start-game, #start-easy, #start-hard').fadeToggle();
 	})
-	// $('#start-easy').on("mouseup", function(e) {
-	// 	deck = new Deck(8)
-	// 	deck.shuffle()
-	// 	// window.location.href = 'file:///Users/punchcode/PC/MemoryGame/index.html';
-	// 	deck.numOfCards = Number($(this)[0].attributes[5].nodeValue)
-	// 	// location.reload();
-	// })
 })
 			
 			
