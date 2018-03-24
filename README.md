@@ -14,6 +14,6 @@
 * make hard mode button create hard mode game K
 * add game clock L
 * calculate a score based on clicks and time and display it at end screen K
-* sound for incorrect guess L
-* music for win and lose screens L
+* <del>sound for incorrect guess L</del>
+* <del>music for win and lose screens L</del>
 * make start buttons static K

@@ -98,7 +98,7 @@ $(document).ready(function() {
 				} else if (choices[0].value !== choices[1].value) {
 					choices[0].elem[0].classList.add('unmatched')
 					choices[1].elem[0].classList.add('unmatched')
-					
+
 					setTimeout(()=> {
 							$(".unmatched").removeClass("flipped");
 							$(".flipper").css("pointer-events", "auto");
