@@ -21,4 +21,4 @@
 * add back button to gameboard
 * add new game button at endgame
 * <del>make cards responsive</del>
-* r2 is pushing title screen a little on smaller screen sizes
+* <del>r2 is pushing title screen a little on smaller screen sizes</del>
