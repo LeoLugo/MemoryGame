@@ -17,4 +17,5 @@
 * sound for incorrect guess L
 * music for win and lose screens L
 * <del>make start buttons static K</del>
-* make a back button
+* <del>make a back button</del>
+* add back button to gameboard

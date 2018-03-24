@@ -80,7 +80,7 @@ $(document).ready(function() {
 		var deck = new Deck(numOfPairs)
 		deck.shuffle()
 		cantina.pause()
-		$('#points').removeClass('hide')
+		// $('#points').removeClass('hide')
 		// $('.container-start').addClass('hide')
 		setTimeout(function() {
 			makeBoard(deck.cards ,health)
@@ -102,8 +102,10 @@ $(document).ready(function() {
 		// let health = 100;  //subs ten on incorrect match	
 		let turnCount = 0  //increments one on each match attempt
 		let cardsLeft = cards.length
-		$('.points-total').text(points)
-		$('.health-total').text(health)
+		setTimeout(function() {
+			$('.points-total').text(points)
+			$('.health-total').text(health)
+		},0)
 
 		$(".flipper").on("click", function(){
 			flipcard.play()
