@@ -3,9 +3,8 @@ var chewy = new Audio("resources/audio/chewy.mp3")
 var flipcard = new Audio("resources/audio/flip.mp3")
 var jedi = new Audio("resources/audio/disturbance.mp3")
 var cantina = new Audio("resources/audio/cantina.mp3")
-cantina.play()
-// let numOfCards = 0;
-// console.log(numOfCards)
+var r2d2 = new Audio("resources/audio/r2talking.mp3")
+
 class Card {
 	constructor(value, display) {
 		this.value = value
@@ -42,20 +41,26 @@ class Deck {
 }
 
 $(document).ready(function() {
+	cantina.play()
+	
 	//r2 comes in on start screen
 	setTimeout(function() {
 		$('#r2').animate({left: '+=800'}, {easing: 'swing'})
+		r2d2.play()
 	},1500) 
 	$('#start-easy').on("mouseup", function(e) {
 		chewy.play()
-		loadGame($(this))
+		loadGame($(this), 9)
 	})
 	$('#start-hard').on("mouseup", function(e) {
 		jedi.play()
-		loadGame($(this))
+		loadGame($(this), 12, 200)
+	})
+	$('#speaker').on("click", function() {
+		cantina.pause()
 	})
 
-	function loadGame(thisDiv) {
+	function loadGame(thisDiv, numOfPairs, health) {
 		//r2 leaves on screen right selection
 		setTimeout(function() {
 			$('#r2').animate({left: '+=1200'}, {easing: 'swing'})
@@ -63,21 +68,20 @@ $(document).ready(function() {
 		//moves start buutons off screen left
 		$('.container-start').animate({right: '50%'}, function(){ $('.container-start').remove(); })
 		//builds new deck
-		var deck = new Deck(Number(thisDiv[0].attributes[5].nodeValue))
-		console.log(deck)
+		var deck = new Deck(numOfPairs)
 		deck.shuffle()
 		cantina.pause()
 		$('#points').removeClass('hide')
 		// $('.container-start').addClass('hide')
 		setTimeout(function() {
-			makeBoard(deck.cards)
+			makeBoard(deck.cards ,health)
 			$('#points').removeClass('hide')
 			$('#health').removeClass('hide')
 		},1500)
 	}
 
 
-	function makeBoard(cards) {
+	function makeBoard(cards, health = 100) {
 		
 		cards.forEach(card => {
 			let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${card.value}</span><img src="./resources/images/${card.display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
@@ -86,7 +90,7 @@ $(document).ready(function() {
 
 		var choices = [];
 		let points = 0;    //tracks points on correct or incorrect match
-		let health = 100;  //subs ten on incorrect match	
+		// let health = 100;  //subs ten on incorrect match	
 		let turnCount = 0  //increments one on each match attempt
 		let cardsLeft = cards.length
 		$('.points-total').text(points)
@@ -120,24 +124,23 @@ $(document).ready(function() {
 				} else if (choices[0].value !== choices[1].value) {
 					health -= 10;
 					points -= 2;
-					
 					choices[0].elem[0].classList.add('unmatched')
 					choices[1].elem[0].classList.add('unmatched')
 					
 					setTimeout(()=> {
-							$(".unmatched").removeClass("flipped");
-							$(".flipper").css("pointer-events", "auto");
-							$(".flipper").removeClass('unmatched')
+						$(".unmatched").removeClass("flipped");
+						$(".flipper").css("pointer-events", "auto");
+						$(".flipper").removeClass('unmatched')
+						$('.health-total').text(health)
+						$('.points-total').text(points)
 					}, 1000)
-					$('.health-total').text(health)
-					$('.points-total').text(points)
 				}
 				choices = [];
 			}
 			if (health === 0) {
 				setTimeout(function() {
 					location.href="./lose.html"
-				},1000)
+				},1500)
 			}
 		})
 	}
