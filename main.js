@@ -59,6 +59,15 @@ $(document).ready(function() {
 	$('#speaker').on("click", function() {
 		cantina.pause()
 	})
+	$('#start-game').on("mouseup", function(e) {
+		$('#start-game, #start-easy, #start-hard').fadeToggle();
+	})
+	$('#backBtn').on("click", function(e) {
+		e.preventDefault();
+		if ($('#start-game').css('display') == 'none') {
+			$('#start-game, #start-easy, #start-hard').fadeToggle();
+		}
+	})
 
 	function loadGame(thisDiv, numOfPairs, health) {
 		//r2 leaves on screen right selection
@@ -119,7 +128,9 @@ $(document).ready(function() {
 					points += 10;
 					$('.points-total').text(points)
 					if (cardsLeft === 0) {
-						location.href="./win.html"
+						setTimeout(function() {
+							location.href="./win.html"
+						})
 					}
 				} else if (choices[0].value !== choices[1].value) {
 					health -= 10;
@@ -145,9 +156,7 @@ $(document).ready(function() {
 		})
 	}
 
-	$('#start-game').on("mouseup", function(e) {
-		$('#start-game, #start-easy, #start-hard').fadeToggle();
-	})
+
 })
 			
 			
