@@ -80,8 +80,6 @@ $(document).ready(function() {
 		var deck = new Deck(numOfPairs)
 		deck.shuffle()
 		cantina.pause()
-		// $('#points').removeClass('hide')
-		// $('.container-start').addClass('hide')
 		setTimeout(function() {
 			makeBoard(deck.cards ,health)
 			$('#points').removeClass('hide')
@@ -99,7 +97,6 @@ $(document).ready(function() {
 
 		var choices = [];
 		let points = 0;    //tracks points on correct or incorrect match
-		// let health = 100;  //subs ten on incorrect match	
 		let turnCount = 0  //increments one on each match attempt
 		let cardsLeft = cards.length
 		setTimeout(function() {
@@ -137,6 +134,7 @@ $(document).ready(function() {
 				} else if (choices[0].value !== choices[1].value) {
 					health -= 10;
 					points -= 2;
+					points <= 0 ? points = 0 : points
 					choices[0].elem[0].classList.add('unmatched')
 					choices[1].elem[0].classList.add('unmatched')
 					
@@ -157,8 +155,6 @@ $(document).ready(function() {
 			}
 		})
 	}
-
-
 })
 			
 			
