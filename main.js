@@ -50,7 +50,7 @@ $(document).ready(function() {
 	},1500) 
 	$('#start-easy').on("mouseup", function(e) {
 		chewy.play()
-		loadGame($(this), 9)
+		loadGame($(this), 9, 100)
 	})
 	$('#start-hard').on("mouseup", function(e) {
 		jedi.play()
@@ -70,6 +70,7 @@ $(document).ready(function() {
 	})
 
 	function loadGame(thisDiv, numOfPairs, health) {
+		console.log(health)
 		//r2 leaves on screen right selection
 		setTimeout(function() {
 			$('#r2').animate({left: '+=1200'}, {easing: 'swing'})
@@ -89,7 +90,8 @@ $(document).ready(function() {
 		},1000)
 		//then attaches click event handlers
 		setTimeout(function() {
-			playGame(deck.cards.length)
+			console.log(health)
+			playGame(deck.cards.length, health)
 		},3500)
 	}
 
@@ -101,7 +103,7 @@ $(document).ready(function() {
 	let startTimestamp;
 	let health = 100;
 
-	function makeBoard(cards) {
+	function makeBoard(cards, health) {
 		//pushes a card to screen at interval
 		(function displayCards(cards) {
 			$.each(cards, function(i) {
@@ -112,13 +114,13 @@ $(document).ready(function() {
 			})
 		})(cards)
 
-		(function startTimer() {
-			startTimestamp = moment().startOf("day");
-			setInterval(function() {
-				startTimestamp++;
-				$('.timer-display').text(moment.unix(startTimestamp).format('ss'))
-			}, 1000);
-		})()
+		// (function startTimer() {
+		startTimestamp = moment().startOf("day");
+		setInterval(function() {
+			startTimestamp++;
+			$('.timer-display').text(moment.unix(startTimestamp).format('ss'))
+		}, 1000);
+		// })()
 
 		setTimeout(function() {
 			$('.points-total').text(points)
@@ -128,9 +130,8 @@ $(document).ready(function() {
 		},0)
 	}		
 
-	function playGame(cardsLeft) {
+	function playGame(cardsLeft, health) {
 		$(".flipper").on("click", function(){
-			console.log(cardsLeft)
 			let choice = {}
 			choice.elem=$(this)
 			choice.value=Number($(this).text())
@@ -157,10 +158,14 @@ $(document).ready(function() {
 					$('.points-total').text(points)
 					if (cardsLeft === 0) {
 						setTimeout(function() {
+							$('.points-final-display').text(points)
+							$('.health-final-display').text(health)
+							$('.time-final-display').text(moment.unix(startTimestamp).format('ss'))
 							location.href="./win.html"
 						},1000)
 					}
 				} else if (choices[0].value !== choices[1].value) {
+					// console.log(health)
 					health -= 10;
 					points -= 2;
 					points <= 0 ? points = 0 : points
@@ -179,6 +184,10 @@ $(document).ready(function() {
 			}
 			if (health === 0) {
 				setTimeout(function() {
+					console.log(startTimestamp)
+					$('.points-final-display').text(points)
+					$('.health-final-display').text(health)
+					$('.time-final-display').text(moment.unix(startTimestamp).format('ss'))
 					location.href="./lose.html"
 				},1500)
 			}
