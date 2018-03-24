@@ -75,7 +75,7 @@ $(document).ready(function() {
 			$('#r2').animate({left: '+=1200'}, {easing: 'swing'})
 		},1000) 
 		//moves start buutons off screen left
-		$('.container-start').animate({right: '50%'}, function(){ $('.container-start').remove(); })
+		$('.container-start').animate({right: '100%'}, function(){ $('.container-start').remove(); })
 		//builds new deck
 		var deck = new Deck(numOfPairs)
 		deck.shuffle()

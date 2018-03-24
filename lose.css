@@ -1,14 +1,23 @@
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: 'Star';
+  src: url('./resources/fonts/Starjedi.ttf') format("truetype");
+}
+
 body {
 	box-sizing: border-box;
 	font-family: 'Star', sans-serif;
-	background-image: url("resources/images/starback.jpg");
+  background-image: url("resources/images/starback.jpg");
+  color:#FFFF82;
 }
-*, *:before, *:after {
-	box-sizing: inherit;
-}
-@font-face {
-	font-family: 'Star';
-	src: url('./resources/fonts/Starjedi.ttf') format("truetype");
+
+.scoring-container {
+  z-index: 50;
+  letter-spacing: 0.1em;
+  position: absolute;
 }
 
 #winpic {
@@ -21,9 +30,7 @@ body {
 	margin-top: 100px;
 }
 
-
 p {
-  color: #FFFF82;
   text-align: center;
 }
 

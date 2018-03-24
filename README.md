@@ -19,3 +19,4 @@
 * <del>make start buttons static K</del>
 * <del>make a back button</del>
 * add back button to gameboard
+* add new game button at endgame

@@ -5,6 +5,10 @@ body {
 	font-family: 'Star', sans-serif;
 }
 
+div {
+	/* border: 1px solid black; */
+}
+
 @font-face {
 	font-family: 'Star';
 	src: url('./resources/fonts/Starjedi.ttf') format("truetype");
@@ -15,7 +19,8 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
-	width: 920px;
+	min-width: 920px;
+	max-width: 920px;
 	height: 420px;
 	justify-content: space-between;
 	margin-top: 100px;
@@ -45,8 +50,6 @@ body {
 /* entire container, keeps perspective */
 .flip-container {
 	perspective: 1000px;
-
-	/* border: 1px solid black; */
 	border-radius: 8px;
 }
 
@@ -58,7 +61,6 @@ body {
 	width: 150px;
 	height: 200px;
 }
-
 
 /* flip speed goes here */
 .flipper {
@@ -100,10 +102,8 @@ body {
 .container-start {
 	display: flex;
 	flex-direction: column;
-	position: relative;
+	position: fixed;
 	height: 500px;
-	/* align-items: center; */
-	/* justify-content: center; */
 	margin-top: 10%;
 	margin-left: 5%;
 	width: 580px;
@@ -112,8 +112,6 @@ body {
 
 .icon-buttons {
 	position: absolute;
-	/* margin-top: 20%; */
-	/* margin-left: -14%; */
 	left: 24px;
 	top: 40px;
 	z-index: 60;
@@ -127,7 +125,6 @@ body {
 }
 
 #backBtn {
-	/* margin-top: 10px; */
 	top: 125px;
 	left: -2px;
 }
@@ -162,7 +159,7 @@ button, input {
 	z-index: 100;
 }
 
-input:active {
+button:active, input:active {
 	box-shadow: inset 2px 2px 2px rgb(136, 136, 126);
 }
 
@@ -171,9 +168,8 @@ input:active {
 }
 
 #r2 {
-	margin-top: 30%;
 	margin-left: -900px;
-	top: 0px;
+	top: 480px;
 	position: absolute;
 }
 
