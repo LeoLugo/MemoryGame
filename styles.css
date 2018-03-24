@@ -15,7 +15,7 @@ div {
 }
 
 /* game page */
-#points, #health {
+#points, #health, #timer {
 	margin-top: 10px;
 	margin-left: 20px;
 	width: 130px;

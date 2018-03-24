@@ -80,45 +80,72 @@ $(document).ready(function() {
 		var deck = new Deck(numOfPairs)
 		deck.shuffle()
 		cantina.pause()
+		//loads boards
 		setTimeout(function() {
-			makeBoard(deck.cards ,health)
 			$('#points').removeClass('hide')
 			$('#health').removeClass('hide')
-		},1500)
+			$('#timer').removeClass('hide')
+			makeBoard(deck.cards ,health)
+		},1000)
+		//then attaches click event handlers
+		setTimeout(function() {
+			playGame(deck.cards.length)
+		},3500)
 	}
 
+	//make makeBoard a class
+	var choices = [];
+	let points = 0;    //tracks points on correct or incorrect match
+	let turnCount = 0  //increments one on each match attempt
+	// let cardsLeft = cards.length
+	let startTimestamp;
+	let health = 100;
 
-	function makeBoard(cards, health = 100) {
-		
-		$.each(cards, function(i) {
-			setTimeout(function() { 
-				let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${cards[i].value}</span><img src="./resources/images/${cards[i].display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
-				$("#gameboard").append(cardhtml)
-			},100 * i)
-		})
+	function makeBoard(cards) {
+		//pushes a card to screen at interval
+		(function displayCards(cards) {
+			$.each(cards, function(i) {
+				setTimeout(function() { 
+					let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${cards[i].value}</span><img src="./resources/images/${cards[i].display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
+					$("#gameboard").append(cardhtml)
+				},100 * i)
+			})
+		})(cards)
 
-		var choices = [];
-		let points = 0;    //tracks points on correct or incorrect match
-		let turnCount = 0  //increments one on each match attempt
-		let cardsLeft = cards.length
+		(function startTimer() {
+			startTimestamp = moment().startOf("day");
+			setInterval(function() {
+				startTimestamp++;
+				$('.timer-display').text(moment.unix(startTimestamp).format('ss'))
+			}, 1000);
+		})()
+
 		setTimeout(function() {
 			$('.points-total').text(points)
 			$('.health-total').text(health)
+			$('.timer-display').text('00')
+			
 		},0)
+	}		
 
+	function playGame(cardsLeft) {
 		$(".flipper").on("click", function(){
-			flipcard.play()
-
+			console.log(cardsLeft)
 			let choice = {}
 			choice.elem=$(this)
 			choice.value=Number($(this).text())
+			flipcard.play()
 			$($(this)).toggleClass("flipped")
 			$($(this)).css("pointer-events", "none");
+
 			if(choices.length < 2) {
 				choices.push(choice)
 			}
+
 			if(choices.length === 2) {
+			    $('.flipper').css("pointer-events", "none");
 				turnCount++
+
 				if(choices[0].value === choices[1].value) {
 					choices[0].elem[0].classList.add('disabled')
 					choices[1].elem[0].classList.add('disabled')
@@ -131,7 +158,7 @@ $(document).ready(function() {
 					if (cardsLeft === 0) {
 						setTimeout(function() {
 							location.href="./win.html"
-						})
+						},1000)
 					}
 				} else if (choices[0].value !== choices[1].value) {
 					health -= 10;
