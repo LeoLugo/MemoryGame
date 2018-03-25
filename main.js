@@ -1,9 +1,10 @@
-const cardImages = ['at-at.svg','bounty_hunter.svg','c3po.svg','death_star.svg','clone.svg','yoda.svg','light_saber_green.svg','r2d2.svg','tie-fighter.svg','falcon.svg','vader.svg','x-wing.svg']
-var chewy = new Audio("resources/audio/chewy.mp3")
-var flipcard = new Audio("resources/audio/flip.mp3")
-var jedi = new Audio("resources/audio/disturbance.mp3")
-var cantina = new Audio("resources/audio/cantina.mp3")
-var r2d2 = new Audio("resources/audio/r2talking.mp3")
+const cardImages = ['at-at.svg','bounty_hunter.svg','c3po.svg','death_star.svg','clone.svg','yoda.svg','light_saber_green.svg','r2d2.svg','tie-fighter.svg','falcon.svg','vader.svg','x-wing.svg'];
+var chewy = new Audio("resources/audio/chewy.mp3");
+var flipcard = new Audio("resources/audio/flip.mp3");
+var jedi = new Audio("resources/audio/disturbance.mp3");
+var cantina = new Audio("resources/audio/cantina.mp3");
+var r2d2 = new Audio("resources/audio/r2talking.mp3");
+// var r2d2 = new Audio("resources/audio/r2d2.mp3")
 
 class Card {
 	constructor(value, display) {
@@ -17,8 +18,7 @@ class Deck {
 		this.cards = []
 		this.numOfCards = numOfCards
 		for(let x = 0; x < 2; x++) {
-			
-			for(let v = 0; v < this.numOfCards; v++) {   //this value changes board size
+			for(let v = 0; v < this.numOfCards; v++) {   //numOfCards value changes board size
 				let value = v
 				this.cards.push(new Card(value, cardImages[v]))
 			}
@@ -43,18 +43,18 @@ $(document).ready(function() {
 	//r2 comes in on start screen
 	setTimeout(function() {
 		$('#r2').animate({left: '+=800'}, {easing: 'swing'})//.delay(10000).animate({left: '+=1200'}, {easing: 'swing'}).delay(10000).animate({left: '-=1200'}, {easing: 'swing'})
-		r2d2.play()
+		r2d2.play();
 	},1500) 
 	$('#start-easy').on("mouseup", function(e) {
-		chewy.play()
-		loadGame($(this), 9, 100)
+		chewy.play();
+		loadGame($(this), 9, 100);
 	})
 	$('#start-hard').on("mouseup", function(e) {
-		jedi.play()
-		loadGame($(this), 12, 200)
+		jedi.play();
+		loadGame($(this), 12, 200);
 	})
 	$('#speaker').on("click", function() {
-		cantina.pause()
+		cantina.pause();
 	})
 	$('#start-game').on("mouseup", function(e) {
 		$('#start-game, #start-easy, #start-hard').fadeToggle();
@@ -65,12 +65,12 @@ $(document).ready(function() {
 			$('#start-game, #start-easy, #start-hard').fadeToggle();
 		}
 	})
-	$('#backBtnEnd').on("mouseup", function() {
+	$('#backBtnEnd').on("mouseup", function(e) {
+		e.preventDefault();
 		location.href="./index.html"
 	})
 
 	function loadGame(thisDiv, numOfPairs, health) {
-		console.log(health)
 		//r2 leaves on screen right selection
 		setTimeout(function() {
 			$('#r2').animate({left: '+=1200'}, {easing: 'swing'})
@@ -90,7 +90,6 @@ $(document).ready(function() {
 		},1000)
 		//then attaches click event handlers
 		setTimeout(function() {
-			console.log(health)
 			playGame(deck.cards.length, health)
 		},3500)
 	}
@@ -120,24 +119,23 @@ $(document).ready(function() {
 		}, 1000);
 
 		setTimeout(function() {
-			$('.points-total').text(points)
-			$('.health-total').text(health)
-			$('.timer-display').text('00')
-			
+			$('.points-total').text(points);
+			$('.health-total').text(health);
+			$('.timer-display').text('00');
 		},0)
 	}		
 
 	function playGame(cardsLeft, health) {
 		$(".flipper").on("click", function(){
-			let choice = {}
-			choice.elem=$(this)
-			choice.value=Number($(this).text())
-			flipcard.play()
-			$($(this)).toggleClass("flipped")
-			$($(this)).css("pointer-events", "none");
+			let choice = {};
+			choice.elem=$(this);
+			choice.value=Number($(this).text());
+			flipcard.play();
+			$($(this)).toggleClass("flipped");
+			$($(this)).css("pointer-events", "none");;
 
 			if(choices.length < 2) {
-				choices.push(choice)
+				choices.push(choice);
 			}
 
 			if(choices.length === 2) {
@@ -145,14 +143,14 @@ $(document).ready(function() {
 				turnCount++
 
 				if(choices[0].value === choices[1].value) {
-					choices[0].elem[0].classList.add('disabled')
-					choices[1].elem[0].classList.add('disabled')
+					choices[0].elem[0].classList.add('disabled');
+					choices[1].elem[0].classList.add('disabled');
 
-					$('.disabled').off()
+					$('.disabled').off();
 					$(".flipper").css("pointer-events", "auto");
-					cardsLeft -=2
+					cardsLeft -=2;
 					points += 10;
-					$('.points-total').text(points)
+					$('.points-total').text(points);
 					if (cardsLeft === 0) {
 						setTimeout(function() {
 							location.href="./win.html"
@@ -161,16 +159,16 @@ $(document).ready(function() {
 				} else if (choices[0].value !== choices[1].value) {
 					health -= 10;
 					points -= 2;
-					points <= 0 ? points = 0 : points
-					choices[0].elem[0].classList.add('unmatched')
-					choices[1].elem[0].classList.add('unmatched')
+					points <= 0 ? points = 0 : points;
+					choices[0].elem[0].classList.add('unmatched');
+					choices[1].elem[0].classList.add('unmatched');
 					
 					setTimeout(()=> {
 						$(".unmatched").removeClass("flipped");
 						$(".flipper").css("pointer-events", "auto");
-						$(".flipper").removeClass('unmatched')
-						$('.health-total').text(health)
-						$('.points-total').text(points)
+						$(".flipper").removeClass('unmatched');
+						$('.health-total').text(health);
+						$('.points-total').text(points);
 					}, 1000)
 				}
 				choices = [];
@@ -182,7 +180,7 @@ $(document).ready(function() {
 			}
 		})
 	}
-})
+});
 			
 			
 			

@@ -178,6 +178,11 @@ button:active, input:active {
 	display: none;
 }
 
+.unmatched .front {
+		background-color: red;
+		transition: background-color 2.5s;
+	}
+
 #r2 {
 	margin-left: -900px;
 	top: 500px;
