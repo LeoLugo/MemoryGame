@@ -5,7 +5,6 @@ var jedi = new Audio("resources/audio/disturbance.mp3");
 var cantina = new Audio("resources/audio/cantina.mp3");
 var r2d2 = new Audio("resources/audio/r2talking.mp3");
 var blip = new Audio("resources/audio/blip.mp3")
-// var r2d2 = new Audio("resources/audio/r2d2.mp3")
 var currenthealth = document.getElementById("healthbar")
 
 class Card {
@@ -100,9 +99,6 @@ $(document).ready(function() {
 	var choices = [];
 	let points = 0;    //tracks points on correct or incorrect match
 	let turnCount = 0  //increments one on each match attempt
-	// let cardsLeft = cards.length
-	// let startTimestamp = 0;                          ++++++++++
-	// let health = 100;                                +++++++++++++
 	var timetime = new Date().getTime()
 	var endTime = timetime + (2 * 62000)
 
@@ -116,11 +112,6 @@ $(document).ready(function() {
 				},100 * i)
 			})
 		})(cards)
-		//counter acting as a timer
-		// setInterval(function() {                     +++++++++++
-		// 	startTimestamp++;
-		// 	$('.timer-display').text(startTimestamp)
-		// }, 1000);
 
 		setInterval(function () {
 			let curtime = new Date().getTime()
@@ -144,8 +135,6 @@ $(document).ready(function() {
 
 		setTimeout(function() {
 			$('.points-total').text(points);              
-			// $('.health-total').text(health);                  ++++++++++++++
-			// $('.timer-display').text('00');                    ++++++
 		},0)
 	}		
 
@@ -181,7 +170,6 @@ $(document).ready(function() {
 						},1000)
 					}
 				} else if (choices[0].value !== choices[1].value) {
-					// health -= 10;                     ++++++++
 					currenthealth.value -= 10;
 					points -= 2;
 					points <= 0 ? points = 0 : points;
