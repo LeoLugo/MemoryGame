@@ -128,7 +128,10 @@ $(document).ready(function() {
 			let minleft = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60))
 			let secleft = Math.floor((timeleft % (1000 * 60)) / 1000)
 
-			if(minleft === 0 && secleft === 0) {
+			if(secleft < 10) {
+				secleft = "0" + secleft
+			}
+			if(minleft === 0 && secleft < 2) {
 				setTimeout(function() {
 					location.href="./lose.html"
 				},1500)

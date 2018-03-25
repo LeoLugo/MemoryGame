@@ -12,7 +12,7 @@
 * <del>health bar to work L</del>
 * <del>images for hard mode K</del>
 * <del>make hard mode button create hard mode game K</del>
-* add game clock L
+* <del>add game clock L ++++made countdown timer</del>
 * calculate a score based on clicks and time and display it at end screen K
 * <del>sound for incorrect guess L   ++++made color red when incorrect guess</del>
 * <del>music for win and lose screens L</del>
@@ -24,9 +24,4 @@
 * <del>r2 is pushing title screen a little on smaller screen sizes</del>
 * possibly merge end game pages onto one so score data can be passed easily
 
-
-
-
-
 card pair animation or sound
-game clock
