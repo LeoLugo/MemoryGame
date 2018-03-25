@@ -22,3 +22,5 @@
 * add new game button at endgame
 * <del>make cards responsive</del>
 * <del>r2 is pushing title screen a little on smaller screen sizes</del>
+* possibly merge end game pages onto one so score data can be passed easily
+

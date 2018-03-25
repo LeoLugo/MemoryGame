@@ -19,13 +19,11 @@ class Deck {
 		for(let x = 0; x < 2; x++) {
 			
 			for(let v = 0; v < this.numOfCards; v++) {   //this value changes board size
-				// console.log(this.numOfCards)
 				let value = v
 				this.cards.push(new Card(value, cardImages[v]))
 			}
 		}
 	}
-
 	shuffle() {
         for (let i = this.cards.length - 1; i > 0; i--) {
 			let j = Math.floor(Math.random() * (i + 1))
@@ -34,7 +32,6 @@ class Deck {
 			this.cards[j] = x
         }
     }
-
 	get getCards() {
 		return this.cards
 	}
@@ -45,7 +42,7 @@ $(document).ready(function() {
 	
 	//r2 comes in on start screen
 	setTimeout(function() {
-		$('#r2').animate({left: '+=800'}, {easing: 'swing'})
+		$('#r2').animate({left: '+=800'}, {easing: 'swing'})//.delay(10000).animate({left: '+=1200'}, {easing: 'swing'}).delay(10000).animate({left: '-=1200'}, {easing: 'swing'})
 		r2d2.play()
 	},1500) 
 	$('#start-easy').on("mouseup", function(e) {
@@ -176,7 +173,6 @@ $(document).ready(function() {
 				choices = [];
 			}
 			if (health === 0) {
-				console.log(points)
 				setTimeout(function() {
 					location.href="./lose.html"
 				},1500)
