@@ -4,6 +4,7 @@ var flipcard = new Audio("resources/audio/flip.mp3");
 var jedi = new Audio("resources/audio/disturbance.mp3");
 var cantina = new Audio("resources/audio/cantina.mp3");
 var r2d2 = new Audio("resources/audio/r2talking.mp3");
+var btnClick = new Audio("resources/audio/btn-click.mp3");
 // var r2d2 = new Audio("resources/audio/r2d2.mp3")
 
 class Card {
@@ -38,7 +39,7 @@ class Deck {
 }
 
 $(document).ready(function() {
-	// cantina.play()
+	cantina.play()
 	
 	//r2 comes in on start screen
 	setTimeout(function() {
@@ -57,18 +58,23 @@ $(document).ready(function() {
 		cantina.pause();
 	})
 	$('#start-game').on("mouseup", function(e) {
+		btnClick.load();
+		btnClick.play();
 		$('#start-game, #start-easy, #start-hard').fadeToggle();
 	})
 	$('#backBtn').on("click", function(e) {
-		e.preventDefault();
+		// e.preventDefault();
+		btnClick.load();
+		btnClick.play();
 		if ($('#start-game').css('display') == 'none') {
 			$('#start-game, #start-easy, #start-hard').fadeToggle();
 		}
 	})
-	$('#backBtnEnd').on("mouseup", function(e) {
-		e.preventDefault();
-		location.href="./index.html"
-	})
+	// $('#backBtnEnd').on("mouseup", function(e) {
+	// 	// e.preventDefault();
+	// 	btnClick.play();
+	// 	location.href="./index.html"
+	// })
 
 	function loadGame(thisDiv, numOfPairs, health) {
 		//r2 leaves on screen right selection
