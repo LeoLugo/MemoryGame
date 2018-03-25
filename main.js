@@ -100,7 +100,7 @@ $(document).ready(function() {
 	let points = 0;    //tracks points on correct or incorrect match
 	let turnCount = 0  //increments one on each match attempt
 	// let cardsLeft = cards.length
-	let startTimestamp;
+	let startTimestamp = 0;
 	let health = 100;
 
 	function makeBoard(cards, health) {
@@ -113,14 +113,11 @@ $(document).ready(function() {
 				},100 * i)
 			})
 		})(cards)
-
-		// (function startTimer() {
-		startTimestamp = moment().startOf("day");
+		//counter acting as a timer
 		setInterval(function() {
 			startTimestamp++;
-			$('.timer-display').text(moment.unix(startTimestamp).format('ss'))
+			$('.timer-display').text(startTimestamp)
 		}, 1000);
-		// })()
 
 		setTimeout(function() {
 			$('.points-total').text(points)
@@ -158,14 +155,10 @@ $(document).ready(function() {
 					$('.points-total').text(points)
 					if (cardsLeft === 0) {
 						setTimeout(function() {
-							$('.points-final-display').text(points)
-							$('.health-final-display').text(health)
-							$('.time-final-display').text(moment.unix(startTimestamp).format('ss'))
 							location.href="./win.html"
 						},1000)
 					}
 				} else if (choices[0].value !== choices[1].value) {
-					// console.log(health)
 					health -= 10;
 					points -= 2;
 					points <= 0 ? points = 0 : points
@@ -183,11 +176,8 @@ $(document).ready(function() {
 				choices = [];
 			}
 			if (health === 0) {
+				console.log(points)
 				setTimeout(function() {
-					console.log(startTimestamp)
-					$('.points-final-display').text(points)
-					$('.health-final-display').text(health)
-					$('.time-final-display').text(moment.unix(startTimestamp).format('ss'))
 					location.href="./lose.html"
 				},1500)
 			}
