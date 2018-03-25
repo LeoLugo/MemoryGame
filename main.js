@@ -4,6 +4,7 @@ var flipcard = new Audio("resources/audio/flip.mp3")
 var jedi = new Audio("resources/audio/disturbance.mp3")
 var cantina = new Audio("resources/audio/cantina.mp3")
 cantina.play()
+var r2d2 = new Audio("resources/audio/r2d2.mp3")
 // let numOfCards = 0;
 // console.log(numOfCards)
 class Card {
@@ -90,11 +91,13 @@ $(document).ready(function() {
 					choices[0].elem[0].classList.add('disabled')
 					choices[1].elem[0].classList.add('disabled')
 
+					r2d2.play()
+
 					$('.disabled').off()
 					$(".flipper").css("pointer-events", "auto");
-
 					points += 10;
 					$('.points-total').text(points)
+
 				} else if (choices[0].value !== choices[1].value) {
 					choices[0].elem[0].classList.add('unmatched')
 					choices[1].elem[0].classList.add('unmatched')

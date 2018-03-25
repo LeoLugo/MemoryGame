@@ -150,10 +150,8 @@ input:active {
 
 .unmatched .front {
 	background-color: red;
-	transition: background-color 2s
+	transition: background-color 2.5s
 }
-
-
 
 
 
