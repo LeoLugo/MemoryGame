@@ -7,6 +7,7 @@ var r2d2 = new Audio("resources/audio/r2talking.mp3");
 var blip = new Audio("resources/audio/blip.mp3")
 var btnClick = new Audio("resources/audio/btn-click.mp3");
 var currenthealth = document.getElementById("healthbar")
+var dealcard = new Audio("resources/audio/card_deal.mp3")
 
 class Card {
 	constructor(value, display) {
@@ -113,6 +114,8 @@ $(document).ready(function() {
 		(function displayCards(cards) {
 			$.each(cards, function(i) {
 				setTimeout(function() { 
+					dealcard.load();
+					dealcard.play();
 					let cardhtml = `<div class="flip-container"><div class="flipper"><div class="front"><span class="cardvalue">${cards[i].value}</span><img src="./resources/images/${cards[i].display}"></div><div class="back"><img src="./resources/images/playing_cards.png"/></div></div></div>`
 					$("#gameboard").append(cardhtml)
 				},100 * i)
