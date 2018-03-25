@@ -6,6 +6,7 @@ var cantina = new Audio("resources/audio/cantina.mp3");
 var r2d2 = new Audio("resources/audio/r2talking.mp3");
 var btnClick = new Audio("resources/audio/btn-click.mp3");
 // var r2d2 = new Audio("resources/audio/r2d2.mp3")
+var currenthealth = document.getElementById("healthbar")
 
 class Card {
 	constructor(value, display) {
@@ -105,8 +106,10 @@ $(document).ready(function() {
 	let points = 0;    //tracks points on correct or incorrect match
 	let turnCount = 0  //increments one on each match attempt
 	// let cardsLeft = cards.length
-	let startTimestamp = 0;
-	let health = 100;
+	// let startTimestamp = 0;                          ++++++++++
+	// let health = 100;                                +++++++++++++
+	var timetime = new Date().getTime()
+	var endTime = timetime + (2 * 62000)
 
 	function makeBoard(cards, health) {
 		//pushes a card to screen at interval
@@ -119,15 +122,35 @@ $(document).ready(function() {
 			})
 		})(cards)
 		//counter acting as a timer
-		setInterval(function() {
-			startTimestamp++;
-			$('.timer-display').text(startTimestamp)
-		}, 1000);
+		// setInterval(function() {                     +++++++++++
+		// 	startTimestamp++;
+		// 	$('.timer-display').text(startTimestamp)
+		// }, 1000);
+
+		setInterval(function () {
+			let curtime = new Date().getTime()
+			let timeleft = endTime - curtime
+
+			let minleft = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60))
+			let secleft = Math.floor((timeleft % (1000 * 60)) / 1000)
+
+			if(secleft < 10) {
+				secleft = "0" + secleft
+			}
+			if(minleft === 0 && secleft < 2) {
+				setTimeout(function() {
+					location.href="./lose.html"
+				},1500)
+			}
+
+			$("#timecount").html(minleft + ":" + secleft)
+
+		}, 1000)
 
 		setTimeout(function() {
-			$('.points-total').text(points);
-			$('.health-total').text(health);
-			$('.timer-display').text('00');
+			$('.points-total').text(points);              
+			// $('.health-total').text(health);                  ++++++++++++++
+			// $('.timer-display').text('00');                    ++++++
 		},0)
 	}		
 
@@ -163,7 +186,8 @@ $(document).ready(function() {
 						},1000)
 					}
 				} else if (choices[0].value !== choices[1].value) {
-					health -= 10;
+					// health -= 10;                     ++++++++
+					currenthealth.value -= 10;
 					points -= 2;
 					points <= 0 ? points = 0 : points;
 					choices[0].elem[0].classList.add('unmatched');
@@ -179,7 +203,7 @@ $(document).ready(function() {
 				}
 				choices = [];
 			}
-			if (health === 0) {
+			if (currenthealth.value === 0) {
 				setTimeout(function() {
 					location.href="./lose.html"
 				},1500)
