@@ -29,7 +29,8 @@
 	</div>
 	<div id="timer" class="hide">
 		<span class="timer-message">time: </span>
-		<span class="timer-display"></span>
+		<span class="timer-display" id="timecount"></span>
+		<!-- <span class="timer-display"></span> -->
 	</div>
 
 	<div id="gameboard"></div>
@@ -40,7 +41,8 @@
 
 	<div id="health" class="hide">
 		<span class="health-message">Health: </span>
-		<span class="health-total"></span>
+		<progress value="100" max="100" id="healthbar"></progress>
+		<!-- <span class="health-total"></span> -->
 	</div>
 
 	<script
