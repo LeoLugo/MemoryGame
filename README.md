@@ -8,13 +8,13 @@
 * <del>create win and lose scenarios</del>
 * <del>create logic so game know when win or lose K</del>
 * <del>connect to win and lose screen where appropriate K</del>
-* card pair animation or sound L
+* <del>card pair animation or sound L</del>
 * <del>health bar to work L</del>
 * <del>images for hard mode K</del>
 * <del>make hard mode button create hard mode game K</del>
-* <del>add game clock L ++++made countdown timer</del>
+* <del>add game clock L</del>
 * calculate a score based on clicks and time and display it at end screen K
-* <del>sound for incorrect guess L   ++++made color red when incorrect guess</del>
+* <del>sound for incorrect guess L</del>
 * <del>music for win and lose screens L</del>
 * <del>make start buttons static K</del>
 * <del>make a back button</del>
@@ -23,5 +23,3 @@
 * <del>make cards responsive</del>
 * <del>r2 is pushing title screen a little on smaller screen sizes</del>
 * possibly merge end game pages onto one so score data can be passed easily
-
-card pair animation or sound

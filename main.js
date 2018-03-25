@@ -4,6 +4,7 @@ var flipcard = new Audio("resources/audio/flip.mp3");
 var jedi = new Audio("resources/audio/disturbance.mp3");
 var cantina = new Audio("resources/audio/cantina.mp3");
 var r2d2 = new Audio("resources/audio/r2talking.mp3");
+var blip = new Audio("resources/audio/blip.mp3")
 // var r2d2 = new Audio("resources/audio/r2d2.mp3")
 var currenthealth = document.getElementById("healthbar")
 
@@ -168,7 +169,7 @@ $(document).ready(function() {
 				if(choices[0].value === choices[1].value) {
 					choices[0].elem[0].classList.add('disabled');
 					choices[1].elem[0].classList.add('disabled');
-
+					blip.play();
 					$('.disabled').off();
 					$(".flipper").css("pointer-events", "auto");
 					cardsLeft -=2;
