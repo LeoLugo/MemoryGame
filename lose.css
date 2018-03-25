@@ -18,6 +18,23 @@ body {
   z-index: 50;
   letter-spacing: 0.1em;
   position: absolute;
+  margin-left: 15px;
+}
+
+#backBtnEnd {
+  background: #FFFF82;
+  color: black;
+	font-family: 'Star', sans-serif;
+  font-size: 15px;
+  padding: 15px;  
+  outline: none;
+
+}
+
+#backBtnEnd:active {
+  box-shadow: inset 3px 3px 3px black;
+  padding-top: 16px;
+  padding-bottom: 14px;
 }
 
 #winpic {

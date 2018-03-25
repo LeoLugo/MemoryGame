@@ -38,7 +38,7 @@ class Deck {
 }
 
 $(document).ready(function() {
-	cantina.play()
+	// cantina.play()
 	
 	//r2 comes in on start screen
 	setTimeout(function() {
@@ -64,6 +64,9 @@ $(document).ready(function() {
 		if ($('#start-game').css('display') == 'none') {
 			$('#start-game, #start-easy, #start-hard').fadeToggle();
 		}
+	})
+	$('#backBtnEnd').on("mouseup", function() {
+		location.href="./index.html"
 	})
 
 	function loadGame(thisDiv, numOfPairs, health) {

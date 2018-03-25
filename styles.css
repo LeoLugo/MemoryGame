@@ -168,6 +168,10 @@ button, input {
 
 button:active, input:active {
 	box-shadow: inset 2px 2px 2px rgb(136, 136, 126);
+	padding-top: 22px;
+	padding-bottom: 18px;
+	padding-left: 21px;
+	padding-right: 19px;
 }
 
 .hide {
