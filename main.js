@@ -71,9 +71,9 @@ $(document).ready(function() {
 
 		var choices = [];
 		let points = 0;
-		let health = 100;
+		let currenthealth = document.getElementById("healbar")
+		
 		$('.points-total').text(points)
-		$('.health-total').text(points)
 
 		$(".flipper").on("click", function(){
 			flipcard.play()
@@ -101,6 +101,7 @@ $(document).ready(function() {
 				} else if (choices[0].value !== choices[1].value) {
 					choices[0].elem[0].classList.add('unmatched')
 					choices[1].elem[0].classList.add('unmatched')
+					currenthealth.value -= 10
 
 					setTimeout(()=> {
 							$(".unmatched").removeClass("flipped");

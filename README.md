@@ -8,19 +8,19 @@
 * <del>create win and lose scenarios</del>
 * create logic so game know when win or lose K
 * connect to win and lose screen where appropriate K
-* <del>card pair animation or sound L-- made sound effect for correct match</del>
+* <del>card pair animation or sound L-- made r2d2 sound effect for correct match</del>
 * health bar to work L
 * images for hard mode K
 * make hard mode button create hard mode game K
 * add game clock L
 * calculate a score based on clicks and time and display it at end screen K
-* <del>sound for incorrect guess L   -made color red when incorrect guess</del>
-* <del>music for win and lose screens L</del>
+* <del>sound for incorrect guess L   ++++made color red when incorrect guess</del>
+* <del>music for win and lose screens L +++++done</del>
 * make start buttons static K
 
 
 
 
 
-health bar
+health bar- works but must do something when at 0
 game clock
