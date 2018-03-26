@@ -108,6 +108,7 @@ $(document).ready(function() {
 	let turnCount = 0  //increments one on each match attempt
 	var timetime = new Date().getTime()
 	var endTime = timetime + (2 * 62000)
+	let secleft = 0
 
 	function makeBoard(cards, health) {
 		//pushes a card to screen at interval
@@ -124,17 +125,17 @@ $(document).ready(function() {
 
 		setInterval(function () {
 			let curtime = new Date().getTime()
-			let timeleft = endTime - curtime
+			timeleft = endTime - curtime
 
 			let minleft = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60))
-			let secleft = Math.floor((timeleft % (1000 * 60)) / 1000)
+			secleft = Math.floor((timeleft % (1000 * 60)) / 1000)
 
 			if(secleft < 10) {
 				secleft = "0" + secleft
 			}
 			if(minleft === 0 && secleft < 2) {
 				setTimeout(function() {
-					location.href="./lose.html"
+					location.href="./lose.html?score=" + points + "health=" + currenthealth.value + "timeleft=" + secleft
 				},1500)
 			}
 
@@ -148,6 +149,7 @@ $(document).ready(function() {
 	}		
 
 	function playGame(cardsLeft, health) {
+		console.log(currenthealth)
 		$(".flipper").on("click", function(){
 			let choice = {};
 			choice.elem=$(this);
@@ -175,7 +177,7 @@ $(document).ready(function() {
 					$('.points-total').text(points);
 					if (cardsLeft === 0) {
 						setTimeout(function() {
-							location.href="./win.html"
+							location.href="./win.html?score=" + points + "health=" + currenthealth.value + "timeleft=" + secleft
 						},1000)
 					}
 				} else if (choices[0].value !== choices[1].value) {
@@ -197,7 +199,7 @@ $(document).ready(function() {
 			}
 			if (currenthealth.value === 0) {
 				setTimeout(function() {
-					location.href="./lose.html"
+					location.href="./lose.html?score=" + points + "health=" + currenthealth.value + "timeleft=" + secleft
 				},1500)
 			}
 		})

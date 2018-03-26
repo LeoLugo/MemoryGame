@@ -10,13 +10,13 @@
 	<div style="display: flex; align-items: center;">
 		<div class="scoring-container">
 			<h3 class="points-final">points:</h3>
-			<span></span>
+			<span class="points-final-display"></span>
 			<h3 class="health-final">health:</h3>
-			<span></span>
+			<span class="health-final-display"></span>
 			<h3 class="time-final">time:</h3>
-			<span></span>
+			<span class="time-final-display"></span>
 			<h3 class="final-score">final score:</h3>
-			<span></span>
+			<span class="final-score-display"></span>
 			<button id="backBtnEnd" type="button"><span class="inner-btn">start menu</span></button>
 		</div>
 		<div id="winpic"></div>
@@ -43,8 +43,14 @@
 			btnClick.load();
 			btnClick.play();
 		})
+		let reg = /(\d+)\w+[=]?(\d+)\w+[=]?(\d+)/
+		let points = window.location.search.match(reg)
+		let finalscore = Number(points[1]) + Number(points[2]) * Number(points[3]) 
+		$('.points-final-display').text(points[1])
+		$('.health-final-display').text(points[2])
+		$('.time-final-display').text(points[3])
+		$('.final-score-display').text(finalscore)
 		$('#backBtnEnd').on("mouseup", function(e) {
-			// e.preventDefault();
 			location.href="./index.html"
 		})
 	</script>
