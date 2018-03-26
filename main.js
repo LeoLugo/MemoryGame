@@ -81,7 +81,11 @@ $(document).ready(function() {
 	function loadGame(thisDiv, numOfPairs, health) {
 		//r2 leaves on screen right selection
 		setTimeout(function() {
-			$('#r2').animate({left: '+=1200'}, {easing: 'swing'})
+			$('#r2').animate({left: '+=1200'}, {easing: 'swing'}).delay(1500).queue(function(nxt) {
+				$('#r2').remove();
+				nxt()
+			})
+			// $('#r2').remove()
 		},1000) 
 		//moves start buutons off screen left
 		$('.container-start').animate({right: '100%'}, function(){ $('.container-start').remove(); })
@@ -149,7 +153,6 @@ $(document).ready(function() {
 	}		
 
 	function playGame(cardsLeft, health) {
-		console.log(currenthealth)
 		$(".flipper").on("click", function(){
 			let choice = {};
 			choice.elem=$(this);
